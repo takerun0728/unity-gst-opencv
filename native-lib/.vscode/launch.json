@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to Unity (CppVSDbg)",
+      "type": "cppvsdbg",
+      "request": "attach",
+      "processId": "${command:pickProcess}",
+    },
+    {
+      "name": "Attach to Android (LLDB)",
+      "type": "lldb",
+      "request": "attach",
+      "pid": "${command:pickProcess}",
+      "initCommands": [
+        "platform select remote-android",
+        "platform connect connect://localhost:${config:lldb.port}"
+      ],
+      "postRunCommands": [
+        "process handle SIGPWR -n true -p true -s false",
+        "process handle SIGXCPU -n true -p true -s false",
+        "target symbols add build/android-debug/libNativeGstOpenCV.so"
+      ],
+    },
+    
+  ],
+}

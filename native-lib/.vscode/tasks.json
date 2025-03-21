@@ -1,0 +1,70 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Push LLDB Server",
+      "type": "shell",
+      "command": "./adb",
+      "args": ["push",
+               "${config:unity.lldbServer.path}",
+               "${config:tmp.path}"],
+      "options": {
+        "cwd": "${config:unity.adb.path}"
+      }
+    },
+    {
+      "label": "Copy LLDB Server to App Folder",
+      "type": "shell",
+      "command": "./adb",
+      "args": ["shell",
+               "run-as ${config:app.name}",
+               "cp ${config:tmp.path}/lldb-server ./files"
+      ],
+      "options": {
+        "cwd": "${config:unity.adb.path}"
+      }
+    },
+    {
+      "label": "Add LLDB Server +x",
+      "type": "shell",
+      "command": "./adb",
+      "args": ["shell",
+               "run-as ${config:app.name}",
+               "chmod +x ./files/lldb-server"
+      ],
+      "options": {
+        "cwd": "${config:unity.adb.path}"
+      }
+    },
+    {
+      "label": "Run LLDB Server",
+      "type": "shell",
+      "dependsOn": ["Push LLDB Server",
+                    "Copy LLDB Server to App Folder",
+                    "Add LLDB Server +x"
+      ],
+      "dependsOrder": "sequence",
+      "command": "./adb",
+      "args": ["shell",
+               "run-as ${config:app.name}",
+               "files/lldb-server platform --server --listen *:${config:lldb.port}",
+               "> /dev/null 2>&1 &"
+      ],
+      "options": {
+        "cwd": "${config:unity.adb.path}"
+      },
+    },
+    {
+      "label": "Kill LLDB Server",
+      "type": "shell",
+      "command": "./adb",
+      "args": ["shell",
+               "run-as ${config:app.name}",
+               "pkill lldb-server"
+      ],
+      "options": {
+        "cwd": "${config:unity.adb.path}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "PKG_CONFIG_EXECUTABLE": "E:/gstreamer-android/arm64/share/gst-android/ndk-build/tools/windows/pkg-config.exe"
+            }
+        },
+        {
+            "name": "windows-base",
+            "hidden": true,
+            "inherits": "base",
+            "generator": "Ninja",
+            "installDir": "${sourceDir}/../unity-prj/Assets/Plugins/Windows",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "cl.exe"
+            },
+            "environment": {
+                "PKG_CONFIG_PATH": "E:/gstreamer/1.0/msvc_x86_64/lib/pkgconfig"
+            }
+        },
+        {
+            "name": "x64-debug",
+            "displayName": "x64 Debug",
+            "inherits": "windows-base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "x64-release",
+            "displayName": "x64 Release",
+            "inherits": "x64-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "android-base",
+            "hidden": true,
+            "inherits": "base",
+            "generator": "Unix Makefiles",
+            "installDir": "${sourceDir}/../unity-prj/Assets/Plugins/Android/arm64-v8a",
+            "cacheVariables": {
+                "CMAKE_SYSTEM_NAME": "Android",
+                "CMAKE_ANDROID_ARCH_ABI": "arm64-v8a",
+                "CMAKE_SYSTEM_VERSION": "21",
+                "CMAKE_ANDROID_NDK": "C:/Program Files/Unity/Hub/Editor/6000.0.41f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK",
+                "CMAKE_MAKE_PROGRAM": "C:/Program Files/Unity/Hub/Editor/6000.0.41f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/prebuilt/windows-x86_64/bin/make.exe"
+            },
+            "environment": {
+                "PKG_CONFIG_PATH": "E:/gstreamer-android/arm64/lib/pkgconfig"
+            }
+        },
+        {
+            "name": "android-debug",
+            "displayName": "Android Debug",
+            "inherits": "android-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "android-release",
+            "displayName": "Android Release",
+            "inherits": "android-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ]
+}

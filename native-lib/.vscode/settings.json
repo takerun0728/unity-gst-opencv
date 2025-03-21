@@ -1,0 +1,7 @@
+{
+    "unity.adb.path": "C:/Program Files/Unity/Hub/Editor/6000.0.41f1/Editor/Data/PlaybackEngines/AndroidPlayer/SDK/platform-tools",
+    "unity.lldbServer.path": "C:/Program Files/Unity/Hub/Editor/6000.0.41f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK/toolchains/llvm/prebuilt/windows-x86_64/lib/clang/18/lib/linux/aarch64/lldb-server",
+    "lldb.port": 5039,
+    "tmp.path": "/data/local/tmp",
+    "app.name": "com.honda.unitygstopencv"
+}
