@@ -73,7 +73,7 @@ If you chose different directories, change the corresponding lines in these conf
 1. Launch VS Code
 1. Open the library folder (unity-gst-opencv -> native-lib)
 1. Click the "CMake" icon in the left sidebar
-1. Pin "Install" to "PINNED COMMANDS"
+1. Add "Build" and "Install" to "PINNED COMMANDS"
 1. Select a configuration preset
 1. Select "Delete Cache and Reconfigure"
 1. Select "Build" from "PINNED COMMANDS"
@@ -84,6 +84,7 @@ If you chose different directories, change the corresponding lines in these conf
 ### Play in Unity
 1. Launch Unity
 1. Open the Unity project folder (unity-gst-opencv -> unity-prj)
+1. Open the scene (Scenes -> SampleScene)
 1. Click "Play" in Unity after building the library above.
 
 ![unity](readme/play.png)
