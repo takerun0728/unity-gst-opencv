@@ -30,7 +30,6 @@ message("${PC_GStreamer_LIBRARY_DIRS}")
 target_include_directories(${LIB_NAME} PRIVATE ${PC_GStreamer_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 target_link_directories(${LIB_NAME} PRIVATE ${PC_GStreamer_LIBRARY_DIRS} ${OpenCV_DIR})
 target_link_libraries(${LIB_NAME} PRIVATE ${PC_GStreamer_LIBRARIES}  ${OpenCV_LIBS} ${GST_PLUGIN_TARGETS})
-message("${GST_PLUGINS_DIR}")
 target_compile_options(${LIB_NAME} PRIVATE ${GST_CFLAGS_OTHER})
 
 install(TARGETS ${LIB_NAME}
